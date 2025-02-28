@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     Telegram.WebApp.expand();
 });
 
-const BOT_TOKEN = "7897837524:AAGlLEZsypPDzZGa1sMdxuP7SPAXjW5_xAE"; // Токен бота
+const BOT_TOKEN = "7897837524:AAGlLEZsypPDzZGa1sMdxuP7SPAXjW5_xAE"; // Вставь сюда свой токен
 
 function sendRequest(command) {
     const topic = document.getElementById("topicInput").value.trim();
@@ -12,24 +12,11 @@ function sendRequest(command) {
     }
 
     const userId = Telegram.WebApp.initDataUnsafe?.user?.id || "unknown";
-    const message = Команда: ${command}\nТема: ${topic};
+    const payload = JSON.stringify({ user_id: userId, topic: topic, command: command });
 
-    alert("Отправляю через sendMessage:\n" + message);
+    alert("Отправляю sendData:\n" + payload);
 
-    fetch(https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${userId}&text=${encodeURIComponent(message)})
-        .then(response => response.json())
-        .then(data => {
-            console.log("Ответ Telegram:", data);
-            if (data.ok) {
-                alert("Сообщение отправлено!");
-            } else {
-                alert("Ошибка отправки сообщения: " + data.description);
-            }
-        })
-        .catch(error => {
-            console.error("Ошибка:", error);
-            alert("Ошибка отправки запроса.");
-        });
+    Telegram.WebApp.sendData(payload);
 }
 
 function sendSimpleRequest(action) {
