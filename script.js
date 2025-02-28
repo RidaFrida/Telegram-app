@@ -3,19 +3,18 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function sendRequest() {
-      const topic = document.getElementById("topicInput").value.trim();
+    const topic = document.getElementById("topicInput").value.trim();
     if (!topic) {
         alert("Введите тему перед отправкой!");
         return;
     }
 
     const userId = Telegram.WebApp.initDataUnsafe?.user?.id || "unknown";
+    const payload = JSON.stringify({ user_id: userId, topic: topic });
 
     alert("Отправляю данные...\\nUser ID: " + userId + "\\nТема: " + topic);
 
-    const payload = JSON.stringify({ user_id: userId, topic: topic });
-
-    console.log("Отправляем sendData:", payload); // Логируем отправку
+    console.log("Отправляем sendData:", payload); // Вывод в консоль браузера
 
     Telegram.WebApp.sendData(payload);
 
