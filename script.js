@@ -18,7 +18,7 @@ unction sendRequest(command) {
 
     alert("Отправляю через sendMessage:\n" + message);
 
-    fetch(https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${userId}&text=${encodeURIComponent(message)})
+    fetch(https://api.telegram.org/bot$7897837524:AAGlLEZsypPDzZGa1sMdxuP7SPAXjW5_xAE/sendMessage?chat_id=${userId}&text=${encodeURIComponent(message)})
         .then(response => response.json())
         .then(data => console.log("Ответ Telegram:", data))
         .catch(error => console.error("Ошибка:", error));
