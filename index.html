@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Web App</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="script.js" defer></script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        .btn { display: block; margin: 10px auto; padding: 15px; width: 90%; font-size: 18px; cursor: pointer; border: none; background-color: #0088cc; color: white; border-radius: 5px; }
+        .btn:hover { background-color: #0077b3; }
+        h2 { color: #333; }
+        input { padding: 10px; width: 80%; margin: 10px auto; display: block; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <h2>Выберите действие</h2>
+    
+    <h3>📅 Контент на месяц</h3>
+    <input type="text" id="topicInput" placeholder="Введите тему для генерации">
+    <button class="btn" onclick="sendRequest()">Сгенерировать</button>
+
+    <h3>Другие функции</h3>
+    <button class="btn" onclick="sendSimpleRequest('create_post')">📝 Создать пост</button>
+    <button class="btn" onclick="sendSimpleRequest('create_reel')">🎬 Создать рилс</button>
+    <button class="btn" onclick="sendSimpleRequest('create_ai_avatar')">🧑‍🎨 Создать ИИ-аватар</button>
+    <button class="btn" onclick="sendSimpleRequest('ai_photoshoot')">📸 ИИ-фотосессия</button>
+    <button class="btn" onclick="sendSimpleRequest('inspiration_reel')">🔍 Вдохновение рилсом</button>
+</body>
+</html>
