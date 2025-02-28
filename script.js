@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function sendRequest() {
-    function sendRequest() {
     const topic = document.getElementById("topicInput").value.trim();
     if (!topic) {
         alert("Введите тему перед отправкой!");
@@ -13,8 +12,9 @@ function sendRequest() {
     const userId = Telegram.WebApp.initDataUnsafe?.user?.id || "unknown";
     const payload = JSON.stringify({ user_id: userId, topic: topic });
 
-    alert("Отправляю данные:\nUser ID: " + userId + "\nТема: " + topic);
+    alert("Отправляю sendData:\n" + payload);
 
+    // Отправляем как callback_query
     Telegram.WebApp.sendData(payload);
 }
 
