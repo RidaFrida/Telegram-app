@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     Telegram.WebApp.expand();
 });
 
-function sendRequest(command) {
+unction sendRequest(command) {
     const topic = document.getElementById("topicInput").value.trim();
     if (!topic) {
         alert("Введите тему перед отправкой!");
@@ -14,17 +14,15 @@ function sendRequest(command) {
     }
 
     const userId = Telegram.WebApp.initDataUnsafe?.user?.id || "unknown";
-    const payload = JSON.stringify({ 
-        user_id: userId, 
-        topic: topic, 
-        command: command // <-- добавляем команду
-    });
+    const message = Команда: ${command}\nТема: ${topic};
 
-    alert("Отправляю команду " + command + " с данными:\n" + payload);
+    alert("Отправляю через sendMessage:\n" + message);
 
-    Telegram.WebApp.sendData(payload);
+    fetch(https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${userId}&text=${encodeURIComponent(message)})
+        .then(response => response.json())
+        .then(data => console.log("Ответ Telegram:", data))
+        .catch(error => console.error("Ошибка:", error));
 }
-
 function sendSimpleRequest(action) {
     fetch("https://hook.eu2.make.com/" + action, { method: "POST" })
         .then(response => alert("Запрос отправлен!"))
