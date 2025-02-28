@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    Telegram.WebApp.expand(); // Расширяет веб-приложение на весь экран
+    Telegram.WebApp.expand();
 });
 
 function sendRequest() {
@@ -8,23 +8,17 @@ function sendRequest() {
         alert("Введите тему перед отправкой!");
         return;
     }
-    
+
     const userId = Telegram.WebApp.initDataUnsafe?.user?.id || "unknown";
 
-    // Показываем user_id перед отправкой (отладка)
-    alert("User ID: " + userId); 
+    alert("User ID: " + userId + "\\nТема: " + topic); // Проверяем, что передаём
 
     const payload = { user_id: userId, topic: topic };
 
-    fetch("https://hook.eu2.make.com/lhop6lhk2bu4clra2uf2h6696nu78fiz", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-    })
-    .then(response => alert("Запрос отправлен!"))
-    .catch(error => alert("Ошибка отправки запроса."));
+    // Отправляем данные в бота через sendData()
+    Telegram.WebApp.sendData(JSON.stringify(payload));
 
-    Telegram.WebApp.close(); // Закрытие Web App после отправки
+    Telegram.WebApp.close();
 }
 
 function sendSimpleRequest(action) {
