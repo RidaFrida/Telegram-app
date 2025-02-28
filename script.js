@@ -2,7 +2,11 @@ document.addEventListener("DOMContentLoaded", function () {
     Telegram.WebApp.expand();
 });
 
-function sendRequest() {
+document.addEventListener("DOMContentLoaded", function () {
+    Telegram.WebApp.expand();
+});
+
+function sendRequest(command) {
     const topic = document.getElementById("topicInput").value.trim();
     if (!topic) {
         alert("Введите тему перед отправкой!");
@@ -10,11 +14,14 @@ function sendRequest() {
     }
 
     const userId = Telegram.WebApp.initDataUnsafe?.user?.id || "unknown";
-    const payload = JSON.stringify({ user_id: userId, topic: topic });
+    const payload = JSON.stringify({ 
+        user_id: userId, 
+        topic: topic, 
+        command: command // <-- добавляем команду
+    });
 
-    alert("Отправляю sendData:\n" + payload);
+    alert("Отправляю команду " + command + " с данными:\n" + payload);
 
-    // Отправляем как callback_query
     Telegram.WebApp.sendData(payload);
 }
 
