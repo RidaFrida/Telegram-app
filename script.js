@@ -10,6 +10,10 @@ function sendRequest() {
     }
     
     const userId = Telegram.WebApp.initDataUnsafe?.user?.id || "unknown";
+
+    // Показываем user_id перед отправкой (отладка)
+    alert("User ID: " + userId); 
+
     const payload = { user_id: userId, topic: topic };
 
     fetch("https://hook.eu2.make.com/lhop6lhk2bu4clra2uf2h6696nu78fiz", {
