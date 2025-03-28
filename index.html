@@ -27,14 +27,26 @@
       width: 120px;
       height: 120px;
     }
+    .button {
+      padding: 15px 30px;
+      background-color: #74abfd;
+      color: white;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+    .button:hover {
+      background-color: #669fd6;
+    }
   </style>
 </head>
 <body>
   <h1>Файл готовится...</h1>
-  <img src="https://media.tenor.com/0e6JbZOfKPAAAAAi/loading-y%C3%BCkleniyor.gif" alt="Загрузка">
-  
+  <img src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif" alt="Загрузка">
+
   <script>
-    // Данные пользователя и файла (например, можно заменить на динамические значения)
     const userId = "12345";  // Пример: Замените на динамическое значение (например, user_id из Telegram)
     const fileId = "67890";  // Пример: Замените на динамическое значение (например, file_id)
 
@@ -65,5 +77,10 @@
       console.error('Ошибка при отправке данных:', error);
     });
   </script>
+
+  <!-- Кнопка "Главное меню" -->
+  <a href="https://t.me/postgeneratoraiBot?startapp=465ecc47be8e6863">
+    <button class="button">Главное меню</button>
+  </a>
 </body>
 </html>
