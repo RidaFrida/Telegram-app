@@ -1,9 +1,10 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Готовим файл…</title>
+  <title>Файл готовится...</title>
   <style>
     body {
       margin: 0;
@@ -26,21 +27,56 @@
       width: 120px;
       height: 120px;
     }
+    button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
   </style>
 </head>
 <body>
-  <h1>Готовим ваш файл…</h1>
+  <h1>Готовим файл...</h1>
   <img src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif" alt="Загрузка">
+  
+  <button onclick="sendData()">Скачать и преобразовать файл</button>
 
   <script>
-    fetch("https://hook.eu2.make.com/i16q15sbwmt9w1rfep3k1zm7so8nsv2q") // вставь сюда свой вебхук
+    function sendData() {
+      const userId = "12345"; // Пример: Замените на динамическое значение (например, user_id из Telegram)
+      const fileId = "67890"; // Пример: Замените на динамическое значение (например, file_id)
+
+      const webhookUrl = `https://hook.eu2.make.com/i16q15sbwmt9w1rfep3k1zm7so8nsv2q`;
+
+      // Создаём объект с данными для отправки
+      const data = {
+        "user_id": userId,
+        "file_id": fileId
+      };
+
+      // Отправляем POST-запрос на Webhook Make
+      fetch(webhookUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => response.json())
       .then(() => {
-        setTimeout(() => {
-          document.body.innerHTML = "<h1>Файл отправлен в Telegram 📩</h1>";
-          setTimeout(() => window.close(), 1500);
-        }, 1000);
+        document.body.innerHTML = "<p>Файл готов! Проверь Telegram 📩</p>";
+        setTimeout(() => window.close(), 2000); // Закрытие окна через 2 секунды
+      })
+      .catch(error => {
+        console.error('Ошибка при отправке данных:', error);
       });
+    }
   </script>
 </body>
 </html>
-
