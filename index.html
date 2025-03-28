@@ -60,29 +60,30 @@
     const webhookUrl = `https://hook.eu2.make.com/i16q15sbwmt9w1rfep3k1zm7so8nsv2q`;
 
     // Создаём объект с данными для отправки в Webhook Make
-    const data = {
-      "user_id": userId,
-      "file_id": fileId
-    };
+   const data = {
+  "user_id": userId,
+  "file_id": fileId
+};
 
-    // Отправляем POST-запрос на Webhook Make
-    fetch(webhookUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .then(() => {
-      setTimeout(() => {
-        document.body.innerHTML = "<h1>Файл отправлен в Telegram 📩</h1>";
-        setTimeout(() => window.close(), 2000); // Закрытие страницы через 2 секунды
-      }, 1500);
-    })
-    .catch(error => {
-      console.error('Ошибка при отправке данных:', error);
-    });
+console.log("Отправляем данные на Webhook:", data); // Проверка отправляемых данных
+
+fetch(webhookUrl, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify(data)
+})
+.then(response => response.json())
+.then(() => {
+  setTimeout(() => {
+    document.body.innerHTML = "<h1>Файл отправлен в Telegram 📩</h1>";
+    setTimeout(() => window.close(), 2000); // Закрытие страницы через 2 секунды
+  }, 1500);
+})
+.catch(error => {
+  console.error('Ошибка при отправке данных:', error);
+});
   </script>
 
   <!-- Кнопка "Главное меню" -->
